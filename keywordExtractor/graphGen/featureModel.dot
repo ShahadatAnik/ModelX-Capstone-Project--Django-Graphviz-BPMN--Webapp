@@ -1,0 +1,7 @@
+digraph pos{ 
+   node [shape="box"]; 
+   edge [arrowhead="dot"]; 
+   POS -> "Employee Authentication System";
+       "Employee Authentication System" -> "Employee Login";
+       "Employee Authentication System" -> "Employee Logout";
+}

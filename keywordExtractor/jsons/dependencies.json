@@ -1,0 +1,88 @@
+{
+    "employee profile": [
+        17
+    ],
+    "employee permission": [
+        17
+    ],
+    "employee timesheets": [
+        17
+    ],
+    "employee wages": [
+        17
+    ],
+    "staff login": [
+        6
+    ],
+    "staff logout": [
+        5
+    ],
+    "customer profile": [
+        18
+    ],
+    "order product": [],
+    "payment": [],
+    "cash": [
+        9
+    ],
+    "credit card": [
+        9
+    ],
+    "debit card": [
+        9
+    ],
+    "bank check": [
+        9
+    ],
+    "customer analytics": [
+        18,
+        33
+    ],
+    "personalized offers": [
+        18
+    ],
+    "return product": [],
+    "staff database": [],
+    "customer database": [],
+    "product database": [],
+    "scan product": [],
+    "inventory list": [],
+    "stock alert": [
+        19
+    ],
+    "items cart": [],
+    "add cart": [
+        23
+    ],
+    "remove cart": [
+        23
+    ],
+    "confirm cart": [
+        23
+    ],
+    "discount offer": [
+        19
+    ],
+    "billing": [],
+    "taxes": [],
+    "home delivery": [],
+    "print receipt": [],
+    "refund": [
+        16
+    ],
+    "admin account": [],
+    "sales analytics": [
+        19,
+        33
+    ],
+    "daily sales report": [
+        19
+    ],
+    "custom report": [
+        33
+    ],
+    "staff analytics": [
+        17,
+        33
+    ]
+}
