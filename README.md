@@ -1,21 +1,16 @@
 # To run this Program you need to run the following command:
 
-## At first create an environment with the following command:
-
+### Create an environment
 `python -m venv venv400`
 
-## Then activate the environment with the following command:
-
+### Activate the environment
 `.\venv400\Scripts\activate`
 
-## Then install the required packages with the following command:
-
+### Install the required packages
 `pip install -r requirements1.py`
 
-## Then run the program with the following command:
-
+### Run the program for nltk packages
 `python .\requirements2.py`
 
-## Then run the program with the following command:
-
+### Run server
 `python manage.py runserver`
