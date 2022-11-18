@@ -9,16 +9,16 @@ from nltk.stem.wordnet import WordNetLemmatizer
 from collections import OrderedDict 
 import os
 import pydot
+
 module_dir = os.path.dirname(__file__)
 file_path = os.path.join(module_dir, 'baz.txt')
-# Create your views here.
+
+
 def keywordExtractorPage(request):
     print("the page has loaded")
     return render(request, 'landingPage.html')
 
-
 def graphMaker(feature_checklist,feature_index):
-   
     isOR_1=False
     isOR_2=False
     isOR_3=False
