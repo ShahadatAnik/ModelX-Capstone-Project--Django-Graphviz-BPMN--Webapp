@@ -1,7 +1,14 @@
 digraph pos{ 
    node [shape="box"]; 
    edge [arrowhead="dot"]; 
-   POS -> "Employee Authentication System";
-       "Employee Authentication System" -> "Employee Login";
-       "Employee Authentication System" -> "Employee Logout";
+   OR_1 [label="OR" shape="ellipse" style="filled"]
+   POS -> "Product Purchase System";
+       "Product Purchase System" -> "Payment System";
+           "Payment System" -> OR_1 [arrowhead=none];
+               OR_1 -> Cash [arrowhead=none];
+               OR_1 -> "Debit Card" [arrowhead=none];
+   POS -> "Product Return System" [arrowhead="odot"];
+       "Product Return System" -> "Return Product" [arrowhead="odot"];
+       "Product Return System" -> Refund [arrowhead="odot"];
+           Refund -> "Return Product" [style="dashed" arrowhead="normal"];
 }

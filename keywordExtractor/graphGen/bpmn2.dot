@@ -1,0 +1,58 @@
+digraph G {
+	fontname="Helvetica,Arial,sans-serif"
+    graph [compound = true, ranksep = .5,
+        color = crimson, bgcolor = white, fontname="Helvetica,Arial,sans-serif",
+        fontsize = 18, labeljust = c, labelloc = t, margin = .9, nodesep = .5,
+        rankdir = TB, ranksep = .25, splines = false,
+    ]
+	node [fontname="Helvetica,Arial,sans-serif", shape="Mrecord", fillcolor="#F4F06A", fontcolor=black, style=filled]
+	edge [fontname="Helvetica,Arial,sans-serif"]
+
+
+	subgraph cluster_0 { 
+        label = "Customer";
+        
+        // shaping the start, end and or nodes for customer
+        startCustomer [
+            shape=circle, label="", color = green,
+			 width = 0.3, fillcolor=green, style=filled
+           ];
+        or4 [shape=diamond,style=filled,label=<<B>X</B>>,height=.1,width=.1] ;
+        or5 [shape=diamond,style=filled,label=<<B>X</B>>,height=.1,width=.1] ;
+
+        startCustomer -> or4;
+        or4 -> add_product -> or5;
+        or4 -> remove_product -> or5;
+        or5 -> final_cart;
+		
+	}
+
+	subgraph cluster_1 { 
+        label = "Employee";
+
+        final_cart -> checkout_cart;
+
+
+	}
+
+    subgraph cluster_2 { 
+        label = "POS System";
+
+        or6 [shape=diamond,style=filled,label=<<B>X</B>>,height=.1,width=.1] ;
+        or7 [shape=diamond,style=filled,label=<<B>X</B>>,height=.1,width=.1] ;
+        endPOS [
+            shape=circle, label="", color = red,
+			 width = 0.3, fillcolor=red, style=filled
+           ];
+        checkout_cart -> product_scan -> inventory_list -> or6;
+        or6 -> stock_alert -> endPOS;
+        or6 -> return_product -> refund -> endPOS;
+        or6 -> discount_offer -> VAT_and_TAX -> billing -> payment_method -> print_receipt -> or7;
+        or7 -> endPOS;
+        or7 -> home_delivery -> endPOS;
+
+	}
+
+
+    
+}
