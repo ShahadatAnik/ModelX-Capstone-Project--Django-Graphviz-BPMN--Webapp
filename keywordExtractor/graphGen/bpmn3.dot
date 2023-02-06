@@ -1,0 +1,41 @@
+digraph G {
+	fontname="Helvetica,Arial,sans-serif"
+    graph [compound = true, ranksep = .5,
+        color = crimson, bgcolor = white, fontname="Helvetica,Arial,sans-serif",
+        fontsize = 18, labeljust = c, labelloc = t, margin = .9, nodesep = .5,
+        rankdir = TB, ranksep = .25, splines = false,
+    ]
+	node [fontname="Helvetica,Arial,sans-serif", shape="Mrecord", fillcolor="#F4F06A", fontcolor=black, style=filled]
+	edge [fontname="Helvetica,Arial,sans-serif"]
+
+
+	subgraph cluster_0 { 
+         label = "Employee";
+        
+        // shaping the start, end and or nodes for Employee
+        startEmployee [
+            shape=circle, label="", color = green,
+			 width = 0.3, fillcolor=green, style=filled
+           ];
+        endEmployee [
+            shape=circle, label="", color = red,
+			 width = 0.3, fillcolor=red, style=filled
+           ];
+        or4 [shape=diamond,style=filled,label=<<B>X</B>>,height=.1,width=.1] ;
+        or5 [shape=diamond,style=filled,label=<<B>X</B>>,height=.1,width=.1] ;
+
+        startEmployee -> Employee_login -> Employee_Profile -> or4;
+        or4 -> Employee_Performance -> or5;
+        or4 -> Employee_Timesheet -> or5;
+        or4 -> Employee_Wages -> or5;
+        or4 -> Employee_Database -> or5;
+        or5 -> Employee_logout -> endEmployee;
+
+		
+	}
+
+
+
+
+    
+}

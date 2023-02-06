@@ -1,0 +1,65 @@
+digraph G {
+	fontname="Helvetica,Arial,sans-serif"
+    graph [compound = true, ranksep = .5,
+        color = crimson, bgcolor = white, fontname="Helvetica,Arial,sans-serif",
+        fontsize = 18, labeljust = c, labelloc = t, margin = .9, nodesep = .5,
+        rankdir = TT, ranksep = .25, splines = true
+    ]
+	node [fontname="Helvetica,Arial,sans-serif", shape="Mrecord", fillcolor="#F4F06A", fontcolor=black, style=filled]
+	edge [fontname="Helvetica,Arial,sans-serif"]
+
+
+	subgraph cluster_0 { 
+        label = "Admin";
+        
+        // shaping the start, end and or nodes for admin
+        startAdmin [
+            shape=circle, label="", color = green,
+			 width = 0.3, fillcolor=green, style=filled
+           ];
+        endAdmin [
+            shape=circle, label="", color = red,
+			 width = 0.3, fillcolor=red, style=filled
+           ];
+        or1 [shape=diamond,style=filled,label=<<B>X</B>>,height=.1,width=.1] ;
+        or2 [shape=diamond,style=filled,label=<<B>X</B>>,height=.1,width=.1] ;
+        or3 [shape=diamond,style=filled,label=<<B>X</B>>,height=.1,width=.1] ;
+
+        // connecting the nodes
+        startAdmin -> Admin_Account -> or1;
+		or1 -> sales_analytics -> or2;
+		or1 -> staff_analytics -> or2;
+		or1 -> create_employee_profile -> or3;
+        or2 -> print_reports -> or3;
+        or3 -> Admin_logout;
+        Admin_logout -> endAdmin;
+		
+	}
+
+	subgraph cluster_1 { 
+        label = "Customer";
+
+        // contuniation of the admin nodes
+		Customer_Account -> Customer_analytics -> personalzed_offers -> or2;
+
+        // shaping the start, end and or nodes for customer
+        startCustomer [
+            shape=circle, label="", color = green,
+			 width = 0.3, fillcolor=green, style=filled
+           ];
+        or4 [shape=diamond,style=filled,label=<<B>X</B>>,height=.1,width=.1] ;
+        or5 [shape=diamond,style=filled,label=<<B>X</B>>,height=.1,width=.1] ;
+
+        startCustomer -> or4;
+        or4 -> add_product -> or5;
+        or4 -> remove_product -> or5;
+        or5 -> final_cart;
+
+        { rank = same; staff_analytics; personalzed_offers; }
+        { rank = same; or2; or4;}
+	}
+
+	or1 -> Customer_Account;
+
+    
+}
