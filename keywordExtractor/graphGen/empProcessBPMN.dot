@@ -1,0 +1,14 @@
+digraph G { 
+  graph [compound = true, ranksep = .5,color = crimson, bgcolor = white, fontname="Helvetica,Arial,sans-serif", fontsize = 18, labeljust = c, labelloc = t, margin = .9, nodesep = .5, rankdir = LR, ranksep = .25, splines = true];
+  node [fontname="Helvetica,Arial,sans-serif", shape="Mrecord", fillcolor="#F4F06A", fontcolor=black, style=filled];
+	edge [fontname="Helvetica,Arial,sans-serif"];
+	subgraph cluster_0 {  
+        label = "Employee"; 
+        startEmployee [shape=circle, label="", color = green, width = 0.3, fillcolor=green, style=filled];
+        endEmployee [shape=circle, label="", color = red, width = 0.3, fillcolor=red, style=filled];
+        "Employee Login"; 
+        "Order Entries"; 
+        "Employee Logout"; 
+    }
+    startEmployee -> "Employee Login" -> "Order Entries" -> "Employee Logout" -> endEmployee;
+}
