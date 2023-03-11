@@ -1,14 +1,27 @@
 digraph pos{ 
    node [shape="box"]; 
    edge [arrowhead="dot"]; 
-   OR_1 [label="OR" shape="ellipse" style="filled"]
-   POS -> "Product Purchase System";
-       "Product Purchase System" -> "Payment System";
-           "Payment System" -> OR_1 [arrowhead=none];
-               OR_1 -> Cash [arrowhead=none];
-               OR_1 -> "Debit Card" [arrowhead=none];
-   POS -> "Product Return System" [arrowhead="odot"];
-       "Product Return System" -> "Return Product" [arrowhead="odot"];
-       "Product Return System" -> Refund [arrowhead="odot"];
-           Refund -> "Return Product" [style="dashed" arrowhead="normal"];
+   POS -> "Employee Authentication System";
+       "Employee Authentication System" -> "Employee Login";
+       "Employee Authentication System" -> "Employee Logout";
+   "Inventory List" [color=red,fontcolor=red];
+   POS -> "Inventory List" [color=red];
+   "Product Purchase System" [color=red,fontcolor=red];
+   POS -> "Product Purchase System" [color=red];
+   "Payment System" [color=red,fontcolor=red];
+   "Product Purchase System" -> "Payment System" [color=red];
+   "Order Entry" [color=red,fontcolor=red];
+   "Product Purchase System" -> "Order Entry" [color=red];
+   "Receipt Generation" [color=red,fontcolor=red];
+   "Product Purchase System" -> "Receipt Generation" [color=red];
+   "Cart System" [color=red,fontcolor=red];
+   "Product Purchase System" -> "Cart System" [color=red];
+       "Cart Append" [color=red,fontcolor=red];
+       "Cart System" -> "Cart Append" [color=red];
+       "Cart Remove" [color=red,fontcolor=red];
+       "Cart System" -> "Cart Remove" [color=red];
+       "Cart Confirmation" [color=red,fontcolor=red];
+       "Cart System" -> "Cart Confirmation" [color=red];
+   "Billing Management" [color=red,fontcolor=red];
+   POS -> "Billing Management" [color=red];
 }
