@@ -32,7 +32,7 @@
             }
 
             body {
-                height: 99vh;
+                height: 90vh;
             }
 
             #logo {
@@ -48,13 +48,12 @@
                     transform: rotate(360deg);
                 }
             }
-            textarea:-moz-placeholder, /* Firefox 18- */
-            textarea::-moz-placeholder, /* Firefox 19+ */
-            textarea:-ms-input-placeholder, /* IE 10+ */
-            textarea::-webkit-input-placeholder, /* Webkit based */
-            textarea::placeholder {
-                /* Modern browsers */
-                color: #0bf;
+            textarea:hover, 
+            textarea:active, 
+            textarea:focus
+            {
+                outline:0px !important;
+                -webkit-appearance:none;
             }
         </style>
     </head>
@@ -62,7 +61,7 @@
     <body class="m-2">
         {% if error %}
         <div
-            class="alert alert-danger alert-dismissible fade show text-center"
+            class="alert alert-danger alert-dismissible fade show z-index:100 position-fixed"
             role="alert"
         >
             <strong>Warning!</strong> {{error}}
@@ -147,7 +146,7 @@
                     method="post"
                     class="w-100 d-flex flex-column justify-item-center align-items-center p-2"
                 >
-                    {% csrf_token%}
+                    {% csrf_token %}
                     <img
                         src="{{images}}/logo.png"
                         alt=""
@@ -165,17 +164,19 @@
                         <label for="floatingTextarea2">Requirements</label>
                     </div>
                     <div
-                        class="form-floating w-100 border border-danger d-flex flex-column justify-item-center align-items-center"
+                        class="form-floating w-100 border border-danger rounded-bottom d-flex flex-column justify-item-center align-items-center"
+                        style="border: none; outline: none;"
                     >
                         <textarea
-                            class="form-control w-100 h-25"
+                            class="form-control shadow-none h-25 p-2 rounded-bottom border-0 fw-bold text-danger bg-transparent lh-base"
                             rows="10"
+                            id="inputText"
                             placeholder="Enter Details..."
                             name="userText"
                             required
                         >{{ userText }}</textarea>
                     </div>
-                    <button type="submit" class="btn btn-outline-danger m-2">
+                    <button type="submit" id="ExtractFeaturesBtn" class="btn btn-outline-danger m-2">
                         Extract Features
                     </button>
                 </form>
@@ -187,8 +188,9 @@
                 {% if generated %}
                 <div class="row p-2 d-flex justify-content-center">
                     <div
-                        class="w-100 p-2 mb-2 bg bg-danger text-white d-flex justify-content-end"
+                        class="w-100 p-2 mb-2 bg bg-danger text-white d-flex justify-content-between"
                     >
+                    <span class="fs-5">Feature Tree</span>
                         <a
                             href="{{images}}/outputGraph.svg"
                             type="button"
@@ -201,6 +203,7 @@
                         class="d-flex justify-content-center align-items-center"
                     >
                         <img
+                        class="img-fluid"
                             src="{{images}}/outputGraph.svg"
                             alt=""
                             srcset=""
@@ -208,7 +211,6 @@
                     </div>
 
                     <!-- Button trigger modal -->
-
                     <button
                         type="button"
                         class="btn btn-danger w-25 d-block mt-4"
@@ -220,38 +222,60 @@
                 </div>
             </div>
         </div>
-        <div class="row p-5 mt-10">
-            <h2>Admin Process</h2>
+        <div class="row w-100 mx-auto mt-10 fs-2 text-danger">
+            <div
+                class="w-100 p-2 mb-2 bg bg-danger text-white d-flex justify-content-between"
+            >
+                <span class="fs-5">BPMN Processes</span>
+            </div>
+            <li>Admin Process</li>
             <img
                 src="{{images}}/outputAdminBPMN.svg"
                 alt=""
                 srcset=""
-                class="img-fluid w-50"
+                class="img-fluid border-2 border-bottom border-danger mb-4"
             />
 
-            <h2>Purchasing Process</h2>
+            <li>Purchasing Process</li>
             <img
                 src="{{images}}/outputPurchaseBPMN.svg"
                 alt=""
                 srcset=""
-                class="img-fluid w-100"
+                class="img-fluid border-2 border-bottom border-danger mb-4"
+
             />
 
-            <h2>Employee Process</h2>
+            <li>Employee Process</li>
             <img
                 src="{{images}}/outputEmpBPMN.svg"
                 alt=""
                 srcset=""
-                class="img-fluid w-50"
+                class="img-fluid"
             />
         </div>
         {% endif %}
 
+    <!-- <footer id="sticky-footer" class="w-100 py-2 bg-danger text-white-50">
+        <div class="container text-center">
+        <small>Copyright &copy; 2023</small>
+        </div>
+    </footer> -->
         <!-- bootstrap JS -->
         <script
             type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         ></script>
         <script src="{{js}}/script.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $('#inputText').keypress(function(e){
+            if(e.which == 13 && e.shiftKey){
+                // submit via ajax or
+                $('form').submit();
+            }
+            });
+        });
+        </script>
     </body>
 </html>
