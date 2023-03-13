@@ -31,3 +31,17 @@ function downloadFiles(data, file_name, file_type) {
         }, 0);
     }
 }
+
+// click enter to submit
+var input = document.getElementById("inputText");
+
+// Execute a function when the user presses a key on the keyboard
+input.addEventListener("keypress", function(event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("ExtractFeaturesBtn").click();
+  }
+});
